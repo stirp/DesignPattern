@@ -5,6 +5,8 @@ package me.shrp.strategy;
  * Created by LynxStirp on 2017/10/4.
  */
 public abstract class StrategyBaseObject {
+    public abstract void setStrategyFunction(StrategyFunction strategyFunction);
+
     abstract void function();
 
     public static void main(String[] args) {

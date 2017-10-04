@@ -26,6 +26,7 @@ public class StrategyObjectA extends StrategyBaseObject{
      * 允许使用中随时更换策略
      * @param strategyFunction
      */
+    @Override
     public void setStrategyFunction(final StrategyFunction strategyFunction) {
         this.strategyFunction = strategyFunction;
     }
