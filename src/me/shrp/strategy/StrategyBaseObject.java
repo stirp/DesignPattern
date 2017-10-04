@@ -9,8 +9,5 @@ public abstract class StrategyBaseObject {
 
     abstract void function();
 
-    public static void main(String[] args) {
-        new StrategyObjectA().function();
-        new StrategyObjectB().function();
-    }
+
 }
