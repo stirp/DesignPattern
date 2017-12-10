@@ -6,7 +6,7 @@ package me.shrp.adapter;
  */
 public class Main {
     public static void main(String[] args) {
-        final ConcreteA concreteA = new ConcreteA();
+        final InterfaceA concreteA = new ConcreteA();
         final InterfaceB adapterB = new AdapterB(concreteA);
         System.out.println(adapterB.functionB());
     }
