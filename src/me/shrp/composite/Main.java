@@ -9,11 +9,17 @@ import java.util.stream.IntStream;
  */
 public class Main {
     public static void main(String[] args) {
-        final Random random = new Random(47);
 
         final CompositeTreeNode root = new CompositeTreeNode("root");
-        final Holder<CompositeTreeNode> lastTreeNode = new Holder<>(root);
 
+        initializeTree(root);
+
+        root.clientFunc();
+    }
+
+    private static void initializeTree(CompositeTreeNode root) {
+        final Random random = new Random(47);
+        final Holder<CompositeTreeNode> lastTreeNode = new Holder<>(root);
         IntStream.range(1,10).forEach(i ->{
             if (random.nextInt() % 2 == 0 ) {
                 final CompositeTreeNode compositeNode = new CompositeTreeNode(lastTreeNode.value.getName() + '.' + i);
@@ -24,8 +30,6 @@ public class Main {
                 lastTreeNode.value.addNode(compositeNode);
             }
         });
-
-        root.clientFunc();
     }
 
     public static final class Holder<T> {

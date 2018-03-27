@@ -13,26 +13,21 @@ public interface OrderState {
     class WaitingPay implements OrderState{
 
         private Order order;
-
         public WaitingPay(Order order){
             this.order = order;
         }
-
         @Override
         public void paid(final int amount) {
             order.setPaid(order.getPaid() + amount);
         }
-
         @Override
         public void checkout() {
             order.setState(new CheckoutState(order));
         }
-
         @Override
         public boolean success() {
             return false;
         }
-
         @Override
         public int getChange() {
             throw new RuntimeException("this order didn't finish yet!");
@@ -41,7 +36,6 @@ public interface OrderState {
 
     class CheckoutState implements OrderState {
         private Order order;
-
         public CheckoutState(Order order){
 
             this.order = order;
@@ -50,17 +44,14 @@ public interface OrderState {
         public void paid(final int amount) {
             throw new RuntimeException("Can't pay any more!");
         }
-
         @Override
         public void checkout() {
             throw new RuntimeException("Checkout already!");
         }
-
         @Override
         public boolean success() {
             return order.getPaid() >= order.getTotal();
         }
-
         @Override
         public int getChange() {
             order.setState(new FinishState(order));
@@ -74,26 +65,21 @@ public interface OrderState {
 
     class FinishState implements OrderState {
         private Order order;
-
         public FinishState(Order order){
             this.order = order;
         }
-
         @Override
         public void paid(final int amount) {
             throw new RuntimeException("Can't pay any more!");
         }
-
         @Override
         public void checkout() {
             throw new RuntimeException("Checkout already!");
         }
-
         @Override
         public boolean success() {
             return order.getPaid() >= order.getTotal();
         }
-
         @Override
         public int getChange() {
             throw new RuntimeException("returned change Already!");
